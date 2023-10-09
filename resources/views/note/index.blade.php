@@ -14,6 +14,8 @@
 </head>
 <body>
 
+@include('includes.head')
+
 <div class="container">
     <div class="d-flex align-items-center justify-content-between">
         <div>
