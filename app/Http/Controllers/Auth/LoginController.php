@@ -21,12 +21,8 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            // Авторизация успешна
-//            dd('success');
             return redirect()->route('index');
         } else {
-            // Неверные учетные данные
-//            dd('error with credentials');
             return back()->withErrors([
                 'email' => 'Неверный email или пароль.',
             ]);
