@@ -15,10 +15,8 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register.in
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
-// API?
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 Route::post('/login', [LoginController::class, 'enter'])->name('login.enter');
 
+//
 Route::post('/notes/create', [NoteController::class, 'create'])->name('notes.create');
-Route::post('/notes/update', [NoteController::class, 'update'])->name('notes.update');
-Route::post('/notes/delete', [NoteController::class, 'delete'])->name('notes.delete');

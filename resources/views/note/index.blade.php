@@ -87,7 +87,7 @@
             var content = $('#updateNoteContent').val();
 
             $.ajax({
-                url: '/notes/update',
+                url: '/api/notes/update',
                 type: 'POST',
                 data: {
                     id: id,
@@ -111,7 +111,7 @@
 
         function delete_note(id) {
             $.ajax({
-                url: '/notes/delete',
+                url: '/api/notes/delete',
                 type: 'POST',
                 data: {
                     id: id,
