@@ -28,7 +28,6 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return 'success';
-//        return redirect('/rosters');
+        return redirect()->route('index');
     }
 }
