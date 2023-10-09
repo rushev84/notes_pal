@@ -8,7 +8,7 @@ git clone git@github.com:rushev84/notes_pal.git
 
 - Перейдите в папку с проектом и переименуйте файл `.env.example` в `.env`
 
-#### Замените в файле .env строки 
+- Замените в файле .env строки 
 
 <pre>
 DB_CONNECTION=mysql
