@@ -1,6 +1,6 @@
 <li class="list-group-item d-flex align-items-center" id="note_{{ $note->id }}">
     <div class="flex-grow-1">
-        <div id="title"><b>{{ $note->title }}</b></div>
+        <div id="title" style="font-weight: bold">{{ $note->title }}</div>
         <div id="content" class="w-100">{{ $note->content }}</div>
     </div>
     <div>

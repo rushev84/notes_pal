@@ -30,3 +30,4 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::post('/login', [LoginController::class, 'enter'])->name('login.enter');
 
 Route::post('/notes/create', [NoteController::class, 'create'])->name('notes.create');
+Route::post('/notes/update', [NoteController::class, 'update'])->name('notes.update');

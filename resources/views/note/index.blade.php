@@ -70,8 +70,12 @@
                 <h5 class="modal-title">Новая заметка</h5>
             </div>
 
-            <form id="form_create_note">
+            <form id="form_update_note">
                 <div class="modal-body">
+                    <div class="form-group d-none">
+                        <label for="idTitle">ID</label>
+                        <input type="text" class="form-control" id="updateIdTitle">
+                    </div>
                     <div class="form-group">
                         <label for="noteTitle">Заголовок</label>
                         <input type="text" class="form-control" id="updateNoteTitle" placeholder="Введите заголовок">
@@ -82,7 +86,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Создать</button>
+                    <button type="submit" class="btn btn-primary">Редактировать</button>
                     <button type="button" class="btn btn-secondary" id="cancelUpdBtn" data-dismiss="modal">Отмена</button>
                 </div>
             </form>
@@ -107,6 +111,9 @@
     document.getElementById('cancelUpdBtn').addEventListener('click', function() {
         $('#updateNoteModal').modal('hide');
     });
+
+
+
 
     $('#form_create_note').submit(function(event) {
         event.preventDefault();
@@ -140,11 +147,45 @@
         let title = note.querySelector('#title').textContent;
         let content = note.querySelector('#content').textContent;
 
+        $('#updateIdTitle').val(id);
         $('#updateNoteTitle').val(title);
         $('#updateNoteContent').val(content);
 
         $('#updateNoteModal').modal('show');
     }
+
+
+
+    $('#form_update_note').submit(function(event) {
+        event.preventDefault();
+
+        var id = $('#updateIdTitle').val();
+        var title = $('#updateNoteTitle').val();
+        var content = $('#updateNoteContent').val();
+
+        $.ajax({
+            url: '/notes/update',
+            type: 'POST',
+            data: {
+                id: id,
+                title: title,
+                content: content,
+                _token: '{{ csrf_token() }}',
+            },
+            success: function (response) {
+                let note = document.getElementById('note_' + id)
+
+                note.querySelector('#title').textContent = title;
+                note.querySelector('#content').textContent = content;
+            },
+            error: function (xhr, status, error) {
+                //
+            }
+        });
+
+        $('#updateNoteModal').modal('hide');
+    });
+
 
 
 </script>

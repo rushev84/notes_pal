@@ -30,4 +30,22 @@ class NoteController extends Controller
             ])
             ->header('Content-Type', 'application/json');
     }
+
+    public function update(Request $request)
+    {
+        $id = $request->input('id');
+        $title = $request->input('title');
+        $content = $request->input('content');
+
+        $note = Note::find($id);
+        $note->title = $title;
+        $note->content = $content;
+        $note->save();
+
+        return response()
+            ->json([
+                'success' => true,
+            ])
+            ->header('Content-Type', 'application/json');
+    }
 }
