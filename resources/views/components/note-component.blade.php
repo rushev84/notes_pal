@@ -5,6 +5,6 @@
     </div>
     <div>
         <button class="btn btn-success" id="updateBtn" onclick="update({{ $note->id }})">Редактировать</button>
-        <button class="btn btn-danger" id="deleteBtn">Удалить</button>
+        <button class="btn btn-danger" id="deleteBtn" onclick="delete_note({{ $note->id }})">Удалить</button>
     </div>
 </li>

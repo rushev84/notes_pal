@@ -48,4 +48,18 @@ class NoteController extends Controller
             ])
             ->header('Content-Type', 'application/json');
     }
+
+    public function delete(Request $request)
+    {
+        $id = $request->input('id');
+
+        $note = Note::find($id);
+        $note->delete();
+
+        return response()
+            ->json([
+                'success' => true,
+            ])
+            ->header('Content-Type', 'application/json');
+    }
 }

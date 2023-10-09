@@ -113,8 +113,6 @@
     });
 
 
-
-
     $('#form_create_note').submit(function(event) {
         event.preventDefault();
 
@@ -186,6 +184,25 @@
         $('#updateNoteModal').modal('hide');
     });
 
+
+    function delete_note(id) {
+
+        $.ajax({
+            url: '/notes/delete',
+            type: 'POST',
+            data: {
+                id: id,
+                _token: '{{ csrf_token() }}',
+            },
+            success: function (response) {
+                let note = document.getElementById('note_' + id)
+                note.remove()
+            },
+            error: function (xhr, status, error) {
+                //
+            }
+        });
+    }
 
 
 </script>
