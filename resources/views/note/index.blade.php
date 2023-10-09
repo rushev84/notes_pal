@@ -32,6 +32,7 @@
     </ul>
 </div>
 
+{{-- modal window for create --}}
 <div class="modal" id="newNoteModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -60,6 +61,36 @@
     </div>
 </div>
 
+{{-- modal window for update --}}
+
+<div class="modal" id="updateNoteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Новая заметка</h5>
+            </div>
+
+            <form id="form_create_note">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="noteTitle">Заголовок</label>
+                        <input type="text" class="form-control" id="updateNoteTitle" placeholder="Введите заголовок">
+                    </div>
+                    <div class="form-group">
+                        <label for="noteContent">Содержимое</label>
+                        <textarea class="form-control" id="updateNoteContent" rows="3" placeholder="Введите содержимое"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn btn-secondary" id="cancelUpdBtn" data-dismiss="modal">Отмена</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
@@ -73,6 +104,9 @@
         $('#newNoteModal').modal('hide');
     });
 
+    document.getElementById('cancelUpdBtn').addEventListener('click', function() {
+        $('#updateNoteModal').modal('hide');
+    });
 
     $('#form_create_note').submit(function(event) {
         event.preventDefault();
@@ -89,12 +123,10 @@
                 _token: '{{ csrf_token() }}',
             },
             success: function (response) {
-                // Обработка успешного ответа от сервера
                 $('.list-group').append(response.html)
             },
             error: function (xhr, status, error) {
-                // Обработка ошибки
-                // ...
+                //
             }
         });
 
@@ -102,6 +134,17 @@
     });
 
 
+    function update(id) {
+        let note = document.getElementById('note_' + id)
+
+        let title = note.querySelector('#title').textContent;
+        let content = note.querySelector('#content').textContent;
+
+        $('#updateNoteTitle').val(title);
+        $('#updateNoteContent').val(content);
+
+        $('#updateNoteModal').modal('show');
+    }
 
 
 </script>
