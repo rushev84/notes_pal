@@ -24,7 +24,7 @@ class LoginController extends Controller
             return redirect()->route('index');
         } else {
             return back()->withErrors([
-                'email' => 'Неверный email или пароль.',
+                'email' => __('Неверный email или пароль.'),
             ]);
         }
     }

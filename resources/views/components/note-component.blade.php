@@ -4,7 +4,7 @@
         <div id="content" class="w-100">{{ $note->content }}</div>
     </div>
     <div>
-        <button class="btn btn-success" id="updateBtn" onclick="update({{ $note->id }})">Редактировать</button>
-        <button class="btn btn-danger" id="deleteBtn" onclick="delete_note({{ $note->id }})">Удалить</button>
+        <button class="btn btn-success" id="updateBtn" onclick="update({{ $note->id }})">{{ __('Редактировать') }}</button>
+        <button class="btn btn-danger" id="deleteBtn" onclick="delete_note({{ $note->id }})">{{ __('Удалить') }}</button>
     </div>
 </li>

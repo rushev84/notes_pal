@@ -5,10 +5,10 @@
     <div class="container">
         <div class="d-flex align-items-center justify-content-between">
             <div>
-                <h1 class="editable-header">Заметки</h1>
+                <h1 class="editable-header">{{ __('Заметки') }}</h1>
             </div>
             <div>
-                <button class="btn btn-primary" id="newNoteBtn">Новая заметка</button>
+                <button class="btn btn-primary" id="newNoteBtn">{{ __('Новая заметка') }}</button>
             </div>
         </div>
 
