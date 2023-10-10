@@ -30,7 +30,7 @@ DB_USERNAME=root
 DB_PASSWORD=root
 </pre>
 
-- Перейдите в папку с проектом и поднимите докер-контейнеры:
+- Поднимите докер-контейнеры:
 ```console
 docker-compose up -d
 ```
