@@ -3,7 +3,7 @@
 ### Запуск проекта
 - Перейдите в терминал вашей операционной системы и склонируйте проект на локальный компьютер:
 ```console
-git clone git@github.com:rushev84/notes_pal.git
+git clone https://github.com/rushev84/notes_pal.git
 ```
 
 - Перейдите в папку с проектом и переименуйте файл `.env.example` в `.env`
