@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">{{ __('Новая заметка') }}</h5>
             </div>
-            <form id="form_create_note">
+            <form id="createNoteForm">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="noteTitle">{{ __('Заголовок') }}</label>

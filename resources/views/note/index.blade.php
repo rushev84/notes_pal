@@ -41,11 +41,12 @@
             $('#updateNoteModal').modal('hide');
         });
 
-        $('#form_create_note').submit(function(event) {
+        // Создаём заметку
+        $('#createNoteForm').submit((event) => {
             event.preventDefault();
 
-            let title = document.getElementById('noteTitle').value;
-            let content = document.getElementById('noteContent').value;
+            let title = document.querySelector('#noteTitle').value;
+            let content = document.querySelector('#noteContent').value;
 
             $.ajax({
                 url: '/notes/create',
@@ -55,7 +56,7 @@
                     content: content,
                     _token: '{{ csrf_token() }}',
                 },
-                success: function (response) {
+                success: (response) => {
                     $('.list-group').append(response.html)
                     $('#newNoteModal').modal('hide')
 
@@ -67,7 +68,7 @@
                     $('#newNoteModal #titleError').html('');
                     $('#newNoteModal #contentError').html('');
                 },
-                error: function(response) {
+                error: (response) => {
 
                     // Очищаем текстовые ошибки
                     $('#titleError').html('');
