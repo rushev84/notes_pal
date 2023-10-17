@@ -116,6 +116,7 @@
                 data: {
                     id: id,
                     _token: '{{ csrf_token() }}',
+                    _method: 'DELETE'
                 },
                 success: function (response) {
                     let note = document.getElementById('note_' + id)
