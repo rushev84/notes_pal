@@ -57,13 +57,43 @@
                 },
                 success: function (response) {
                     $('.list-group').append(response.html)
+                    $('#newNoteModal').modal('hide')
+
+                    // Очищаем значения полей
+                    $('#newNoteModal #noteTitle').val('');
+                    $('#newNoteModal #noteContent').val('');
+
+                    // Очищаем текстовые ошибки
+                    $('#newNoteModal #titleError').html('');
+                    $('#newNoteModal #contentError').html('');
                 },
-                error: function (xhr, status, error) {
-                    //
+                error: function(response) {
+
+                    // Очищаем текстовые ошибки
+                    $('#titleError').html('');
+                    $('#contentError').html('');
+
+                    // Ошибки валидации
+                    let errors = response.responseJSON.errors;
+                    for (let key in errors) {
+                        if (errors.hasOwnProperty(key)) {
+                            let errorMessages = errors[key];
+                            for (let i = 0; i < errorMessages.length; i++) {
+                                console.log(errorMessages[i]);
+                                // Вывод ошибки в нужное место в форме
+                                if (key === 'title') {
+                                    $('#newNoteModal #titleError').text(errorMessages[i]);
+                                } else if (key === 'content') {
+                                    $('#newNoteModal #contentError').text(errorMessages[i]);
+                                }
+                            }
+                        }
+                    }
                 }
+
             });
 
-            $('#newNoteModal').modal('hide');
+
         });
 
         function update(id) {
@@ -82,9 +112,9 @@
         $('#form_update_note').submit(function(event) {
             event.preventDefault();
 
-            var id = $('#updateIdTitle').val();
-            var title = $('#updateNoteTitle').val();
-            var content = $('#updateNoteContent').val();
+            let id = $('#updateIdTitle').val();
+            let title = $('#updateNoteTitle').val();
+            let content = $('#updateNoteContent').val();
 
             $.ajax({
                 url: '/api/notes/update',
@@ -100,13 +130,42 @@
 
                     note.querySelector('#title').textContent = title;
                     note.querySelector('#content').textContent = content;
+
+                    $('#updateNoteModal').modal('hide');
+
+                    // Очищаем значения полей
+                    $('#updateNoteModal #updateNoteTitle').val('');
+                    $('#updateNoteModal #updateNoteContent').val('');
+
+                    // Очищаем текстовые ошибки
+                    $('#updateNoteModal #titleError').html('');
+                    $('#updateNoteModal #contentError').html('');
                 },
-                error: function (xhr, status, error) {
-                    //
+                error: function(response) {
+                    // Очищаем текстовые ошибки
+                    $('#updateNoteModal #titleError').html('');
+                    $('#updateNoteModal #contentError').html('');
+
+                    // Ошибки валидации
+                    let errors = response.responseJSON.errors;
+                    for (let key in errors) {
+                        if (errors.hasOwnProperty(key)) {
+                            let errorMessages = errors[key];
+                            for (let i = 0; i < errorMessages.length; i++) {
+                                console.log(errorMessages[i]);
+                                // Вывод ошибки в нужное место в форме
+                                if (key === 'title') {
+                                    $('#updateNoteModal #titleError').text(errorMessages[i]);
+                                } else if (key === 'content') {
+                                    $('#updateNoteModal #contentError').text(errorMessages[i]);
+                                }
+                            }
+                        }
+                    }
                 }
             });
 
-            $('#updateNoteModal').modal('hide');
+
         });
 
         function delete_note(id) {

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateNoteRequest;
+use App\Http\Requests\UpdateNoteRequest;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +12,7 @@ use App\View\Components\NoteComponent;
 
 class NoteController extends Controller
 {
-    public function create(Request $request)
+    public function create(CreateNoteRequest $request)
     {
         $title = $request->input('title');
         $content = $request->input('content');
@@ -31,7 +33,7 @@ class NoteController extends Controller
             ->header('Content-Type', 'application/json');
     }
 
-    public function update(Request $request)
+    public function update(UpdateNoteRequest $request)
     {
         $id = $request->input('id');
         $title = $request->input('title');

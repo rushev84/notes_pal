@@ -14,10 +14,12 @@
                     <div class="form-group">
                         <label for="noteTitle">{{ __('Заголовок') }}</label>
                         <input type="text" class="form-control" id="updateNoteTitle" placeholder="{{ __('Введите заголовок') }}">
+                        <div class="invalid-feedback" id="titleError" style="color: red; display: block;"></div>
                     </div>
                     <div class="form-group">
                         <label for="noteContent">{{ __('Содержимое') }}</label>
                         <textarea class="form-control" id="updateNoteContent" rows="3" placeholder="{{ __('Введите содержимое') }}"></textarea>
+                        <div class="invalid-feedback" id="contentError" style="color: red; display: block;"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
