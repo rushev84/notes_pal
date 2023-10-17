@@ -88,7 +88,7 @@
 
             $.ajax({
                 url: '/api/notes/update',
-                type: 'POST',
+                type: 'PATCH',
                 data: {
                     id: id,
                     title: title,
